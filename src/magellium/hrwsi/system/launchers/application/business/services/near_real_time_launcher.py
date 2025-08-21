@@ -1,4 +1,4 @@
-from magellium.hrwsi.system.harvesters.application.business.services.harvester import AbstractHarvesterService
+from magellium.hrwsi.system.harvesters.application.business.services.harvester import H
 from magellium.hrwsi.system.common.modes import RunMode
 from magellium.hrwsi.system.harvesters.application.ports.outputs.repository import HarvesterRepository
 from magellium.hrwsi.system.common.logger import LoggerFactory
