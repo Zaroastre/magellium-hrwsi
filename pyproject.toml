@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "magellium-hrwsi"
+version = "0.1.0"
+description = ""
+authors = ["Nicolas Metivier <nicolas.a.metivier@gmail.com>"]
+readme = "README.md"
+packages = [{include = "magellium", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+psycopg2-binary = "^2.9.10"
+hvac = "^2.3.0"
+retry = "^0.9.2"
+boto3 = "^1.40.15"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

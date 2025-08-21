@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "console": "integratedTerminal",
+            "request": "launch",
+            "program": "${file}",
+            "args": [],
+            "env": {
+                "HRWSI_ENVIRONMENT_NAME": "dev",
+                "HRWSI_HARVESTER_RUN_MODE": "ARCHIVE",
+                "HRWSI_HARVESTER_DATABASE_HOST": "localhost",
+                "HRWSI_HARVESTER_DATABASE_PORT": "5432",
+                "HRWSI_HARVESTER_DATABASE_USER": "postgres",
+                "HRWSI_HARVESTER_DATABASE_PASSWORD": "postgres",
+                "HRWSI_HARVESTER_DATABASE_NAME": "postgres",
+                "HRWSI_HARVESTER_ARCHIVE_START_DATE": "2023-01-01",
+                "HRWSI_HARVESTER_ARCHIVE_END_DATE": "2023-01-31",
+                "PYTHONPATH": "${workspaceFolder}/src"
+            }
+        }
+    ]
+}
