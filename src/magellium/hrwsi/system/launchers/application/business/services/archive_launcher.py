@@ -8,4 +8,4 @@ class ArchiveHarvesterService(AbstractHarvesterService):
         super().__init__(RunMode.ARCHIVE, repository)
 
     def harvest(self) -> None:
-        print("Harvesting in Archive mode...")
+        self.LOGGER.info("Harvesting in Archive mode...")

@@ -29,7 +29,7 @@ class HarvestAllTilesWithIdleStateUseCase(AbstractUseCase):
         self.__tile_processing_state: TileProcessState = TileProcessState.IDLE
 
     def execute(self) -> None:
-        print("Harvesting tiles in idle state...")
+        self.LOGGER.info("Harvesting tiles in idle state...")
 
 class HarvestAllTilesWithErrorStateUseCase(AbstractUseCase):
     def __init__(self, service: LauncherService):
@@ -37,7 +37,7 @@ class HarvestAllTilesWithErrorStateUseCase(AbstractUseCase):
         self.__tile_processing_state: TileProcessState = TileProcessState.ERROR
 
     def execute(self) -> None:
-        print("Harvesting tiles in error state...")
+        self.LOGGER.info("Harvesting tiles in error state...")
 
 
 class HarvestTilesWithIdleStateBeforeDateUseCase(AbstractUseCase):
@@ -48,7 +48,7 @@ class HarvestTilesWithIdleStateBeforeDateUseCase(AbstractUseCase):
 
 
     def execute(self) -> None:
-        print("Harvesting tiles in idle state...")
+        self.LOGGER.info("Harvesting tiles in idle state...")
 
 class HarvestTilesWithErrorStateBeforeDateUseCase(AbstractUseCase):
     def __init__(self, service: LauncherService, to_date: DateTime):
@@ -58,7 +58,7 @@ class HarvestTilesWithErrorStateBeforeDateUseCase(AbstractUseCase):
 
 
     def execute(self) -> None:
-        print("Harvesting tiles in error state...")
+        self.LOGGER.info("Harvesting tiles in error state...")
 
 class HarvestTilesWithIdleStateAfterDateUseCase(AbstractUseCase):
     def __init__(self, service: LauncherService, from_date: DateTime):
@@ -68,7 +68,7 @@ class HarvestTilesWithIdleStateAfterDateUseCase(AbstractUseCase):
 
 
     def execute(self) -> None:
-        print("Harvesting tiles in idle state...")
+        self.LOGGER.info("Harvesting tiles in idle state...")
 
 class HarvestTilesWithErrorStateAfterDateUseCase(AbstractUseCase):
     def __init__(self, service: LauncherService, from_date: DateTime):
@@ -78,7 +78,7 @@ class HarvestTilesWithErrorStateAfterDateUseCase(AbstractUseCase):
 
 
     def execute(self) -> None:
-        print("Harvesting tiles in error state...")
+        self.LOGGER.info("Harvesting tiles in error state...")
 
 class HarvestTilesWithIdleStateBetweenDatesUseCase(AbstractUseCase):
     def __init__(self, service: LauncherService, from_date: DateTime, to_date: DateTime):
@@ -89,7 +89,7 @@ class HarvestTilesWithIdleStateBetweenDatesUseCase(AbstractUseCase):
 
 
     def execute(self) -> None:
-        print("Harvesting tiles in idle state...")
+        self.LOGGER.info("Harvesting tiles in idle state...")
 
 class HarvestTilesWithErrorStateBetweenDatesUseCase(AbstractUseCase):
     def __init__(self, service: LauncherService, from_date: DateTime, to_date: DateTime):
@@ -100,5 +100,5 @@ class HarvestTilesWithErrorStateBetweenDatesUseCase(AbstractUseCase):
 
 
     def execute(self) -> None:
-        print("Harvesting tiles in error state...")
+        self.LOGGER.info("Harvesting tiles in error state...")
 

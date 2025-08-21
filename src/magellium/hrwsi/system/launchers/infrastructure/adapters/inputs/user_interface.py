@@ -3,8 +3,8 @@ from magellium.hrwsi.system.harvesters.infrastructure.adapters.outputs.repositor
 from magellium.hrwsi.system.harvesters.application.ports.outputs.notifier import Notifier
 from magellium.hrwsi.system.harvesters.application.business.services.harvester import HarvesterService, HarvesterServiceImpl
 from magellium.hrwsi.system.common.modes import RunMode
-from magellium.hrwsi.system.harvesters.application.business.services.harvester_factory import HarvesterServiceFactory
 from magellium.hrwsi.system.harvesters.application.process_manager import HarvesterProcessManager
+from magellium.hrwsi.system.common.logger import LoggerFactory
 
 
 from enum import Enum
@@ -27,12 +27,15 @@ class EnvironmentVariablesNames(Enum):
 
 class CommandLineUserInterface(UserInterface):
 
+    LOGGER = LoggerFactory.get_logger(__name__)
+
+
     def __init__(self):
         self.__manager: HarvesterProcessManager|None = None
 
     def start(self) -> None:
         if (self.__manager is None):
-            print("Starting Command Line User Interface...")
+            self.LOGGER.info("Starting Command Line User Interface...")
 
             run_mode_value: str | None = environ.get(EnvironmentVariablesNames.HRWSI_HARVESTER_RUN_MODE.value)
             if (run_mode_value is None):
@@ -111,6 +114,6 @@ class CommandLineUserInterface(UserInterface):
 
 
     def stop(self) -> None:
-        print("Stopping Command Line User Interface...")
+        self.LOGGER.info("Stopping Command Line User Interface...")
         if (self.__manager is not None):
             self.__manager.stop_harvesting()
