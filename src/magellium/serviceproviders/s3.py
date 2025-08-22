@@ -12,35 +12,40 @@ class S3ServiceProvider(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def download_file(self) -> Path:
+    def download_file(self, bucket_name: str, source_file_path: str, destination_file_path: Path) -> Path:
         raise NotImplementedError()
     
     @abstractmethod
-    def upload_file(self) -> Path:
+    def upload_file(self, bucket_name: str, source_file_path: Path, destination_file_path: str) -> Path:
         raise NotImplementedError()
 
-class WekeoS3Client(S3ServiceProvider):
+class S3Client(S3ServiceProvider):
     __instances = {}
     
     LOGGER = LoggerFactory.get_logger(__name__)
 
-
-    def __new__(cls, url: str, token: str):
-        key = (url, token)
+    def __new__(cls, endpoint_url: str, access_key: str, secret_key: str, region: str):
+        key = (endpoint_url, access_key, secret_key, region)
         if key not in cls.__instances:
             cls.__instances[key] = super().__new__(cls)
         return cls.__instances[key]
     
     
-    def __init__(self, configuration_file: Path):
-        self.__configuration_file: Path = configuration_file
+    def __init__(self, endpoint_url: str, access_key_id: str, secret_access_key: str, region_name: str):
+        self.s3 = boto3.resource(
+                service_name='s3',
+                aws_access_key_id=access_key_id,
+                aws_secret_access_key=secret_access_key,
+                endpoint_url=endpoint_url,
+                region_name=region_name
+            )
 
         self.LOGGER.info("S3 client initialized and authenticated")
 
-    @retry(tries=3, delay=2, backoff=2)
-    def download_file(self):
+    @retry(tries=3, delay=2, backoff=2, jitter=(1, 3))
+    def download_file(self, bucket_name: str, source_file_path: str, destination_file_path: Path):
         return super().download_file()
     
-    @retry(tries=3, delay=2, backoff=2)
-    def upload_file(self):
+    @retry(tries=3, delay=2, backoff=2, jitter=(1, 3))
+    def upload_file(self, bucket_name: str, source_file_path: Path, destination_file_path: str):
         return super().upload_file()

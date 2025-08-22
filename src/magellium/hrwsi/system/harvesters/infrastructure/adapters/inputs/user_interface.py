@@ -10,7 +10,7 @@ from magellium.hrwsi.system.harvesters.application.business.services.harvester i
 from magellium.hrwsi.system.common.modes import RunMode
 from magellium.hrwsi.system.harvesters.application.process_manager import HarvesterProcessManager
 from magellium.serviceproviders.vault import HashcorpVaultClient, VaultServiceProvider
-from magellium.serviceproviders.s3 import WekeoS3Client, S3ServiceProvider
+from magellium.serviceproviders.s3 import S3Client, S3ServiceProvider
 from magellium.hrwsi.system.common.logger import LoggerFactory
 
 
@@ -102,7 +102,7 @@ class CommandLineUserInterface(UserInterface):
                 token=vault_token_value
             )
 
-            s3: S3ServiceProvider = WekeoS3Client(
+            s3: S3ServiceProvider = S3Client(
                 configuration_file=Path(s3_configuration_file_path_value)
             )
 

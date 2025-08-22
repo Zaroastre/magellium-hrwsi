@@ -39,7 +39,7 @@ class HashcorpVaultClient(VaultServiceProvider):
             raise RuntimeError(error_message)
         self.LOGGER.info("Vault client initialized and authenticated")
 
-    @retry(tries=3, delay=2, backoff=2)
+    @retry(tries=3, delay=2, backoff=2, jitter=(1, 3))
     def read_secret(self, key: str, path: str = "secrets") -> Optional[dict[str, str]]:
         """
         Lire un secret depuis Vault avec retry automatique

@@ -1,0 +1,64 @@
+aggregation_timespan: '7'
+tile_id: tile_id
+auxiliaries:
+  DTM: path/to/DTM
+  GIPP: path/to/GIPP
+  CAMS: path/to/CAMS
+  mask_forest_urban_water: path/to/grassland/at/60m 
+  mask_mountain_snow_monthly: path/to/imperviousness/at/60m
+  mask_non_mountain_area: path/to/tree/cover/density/at/60m
+  s1_reference: path/to/tree/cover/density/at/60m
+  s1_radar_shadow_layover: path/to/watert/layer/at/60m
+  s1_incidence_angle: path/to/watert/layer/at/60m
+  DEM: path/to/DEM
+  SLOPE: path/to/SLP
+  TCD: path/to/TCD
+  WATER_MASK: path/to/water_mask
+  GRASSLAND: path/to/grassland/at/60m 
+  IMPERVIOUSNESS: path/to/imperviousness/at/60m
+  TREE_COVER: path/to/tree/cover/density/at/60m
+  WATER_LAYER: path/to/watert/layer/at/60m
+  TILES_UTM: s3://path/to/utm
+conf:
+  lis_conf_file: path/to/lis_configuration.json
+  fsc_conf_file: path/to/launch_configuration_file.json
+  maja_userconf: path/to/userconf
+date: 'YYYYMMDD'
+input:
+  measurement_date: 'YYYYMMDD'
+  sigma0: path/to/sigma0
+  L1C: path/to/L1C
+  S2_tile: tile_ID
+  L2A: path/to/input_L2A
+  GRD: pathes/to/GRD
+  FSCs: path/to/FSCs
+  CLASSIFICATION_COEFFICIENTS: path/to/classification/coefficients
+  RADARSHADOW: path/to/radar/shadow/at/60m
+  SIGMA0: path/to/sigma0
+  TEMPERATURE: path/to/temperature/sum/netcdf
+  WATER_CATEGORY: path/to/water/body/category
+  WIND_SPEED: path/to/wind/speed/average/netcdf
+  WIC_S2: path/to/WIC_S2_input/
+  WIC_S1: path/to/WIC_S1_input/
+intermediates:
+  L2A:
+    src: path/to/L2A/on/worker
+    dst: path/to/L2A/on/bucket
+  GVmask:
+    src: path/to/GVmask/on/worker
+    dst: path/to/GVmask/on/bucket
+log:
+  STDOUT:
+    src: path/to/stdout/on/worker
+    dst: path/to/stdout/on/bucket
+  STDERR:
+    src: path/to/stderr/on/worker
+    dst: path/to/stderr/on/bucket
+output:
+  title: product_title
+  src: path/to/FSC/on/worker
+  dst: path/to/FC/on/bucket
+qas:
+  src: path/to/QAS/on/worker
+  dst: path/to/QAS/on/bucket
+run_mode: nominal
